@@ -1300,22 +1300,17 @@ p {
   cursor: pointer;
   z-index: 999;
   border: 2px solid var(--color-bg);
-  animation: floating-whatsapp-pulse 4s infinite ease-in-out;
+  animation: waPulse 4s infinite ease-in-out;
   transition: var(--transition-smooth);
 }
 
 .floating-whatsapp-trigger:hover {
-  transform: scale(1.1) rotate(5deg);
   background-color: #20ba5a;
 }
 
-@keyframes floating-whatsapp-pulse {
-  0%, 100% {
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-  }
-  50% {
-    box-shadow: 0 4px 25px rgba(37, 211, 102, 0.8), 0 0 0 10px rgba(37, 211, 102, 0.15);
-  }
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.35); }
+  50% { box-shadow: 0 4px 32px rgba(37,211,102,0.65), 0 0 0 8px rgba(37,211,102,0.1); }
 }
 
 /* Mobile Nav Drawer */
