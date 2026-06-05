@@ -1,194 +1,190 @@
 import React from 'react';
-import { MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MessageSquare, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Showcase({ openWhatsApp, filterCategory, setFilterCategory }) {
   const products = [
-    { id: 1, name: "Kovai Cotton Saree", material: "Pure Cotton", price: 1850, category: "sarees", color: "Deep Red", isNew: true },
-    { id: 2, name: "Temple Border Saree", material: "Handloom Cotton", price: 2400, category: "sarees", color: "Ivory Gold", isNew: true },
-    { id: 3, name: "Striped Dress Material", material: "Cotton Silk Blend", price: 950, category: "dress-materials", color: "Forest Green", isNew: false },
-    { id: 4, name: "Checks Lungi", material: "Pure Cotton", price: 450, category: "lungis", color: "Multi", isNew: false },
-    { id: 5, name: "Mullai Motif Saree", material: "Handloom Cotton", price: 3200, category: "sarees", color: "Maroon Gold", isNew: true },
-    { id: 6, name: "Woven Table Runner", material: "Cotton Linen", price: 750, category: "home-textiles", color: "Natural Ivory", isNew: false }
-  ];
-
-  const categories = [
-    { id: "All", label: "All Weaves" },
-    { id: "sarees", label: "Sarees" },
-    { id: "dress-materials", label: "Dress Materials" },
-    { id: "lungis", label: "Lungis" },
-    { id: "home-textiles", label: "Home Textiles" }
-  ];
-
-  const getProductCSSStyle = (id) => {
-    switch (id) {
-      case 1:
-        return {
-          background: 'linear-gradient(135deg, #6B0F1A 0%, #3a080f 100%)',
-          backgroundImage: 'repeating-linear-gradient(45deg, #6B0F1A, #6B0F1A 12px, #C9A84C 12px, #C9A84C 14px)'
-        };
-      case 2:
-        return {
-          background: 'linear-gradient(135deg, #FAF3E0 0%, #C9A84C 100%)',
-          backgroundImage: 'repeating-linear-gradient(90deg, #FAF3E0, #FAF3E0 20px, #C9A84C 21px, #FAF3E0 21px, #FAF3E0 40px)'
-        };
-      case 3:
-        return {
-          background: 'linear-gradient(135deg, #2D4A3E 0%, #FAF3E0 100%)',
-          backgroundImage: 'repeating-linear-gradient(45deg, #2D4A3E, #2D4A3E 10px, #FAF3E0 10px, #FAF3E0 20px)'
-        };
-      case 4:
-        return {
-          background: '#FAF3E0',
-          backgroundImage: 'repeating-linear-gradient(90deg, #6B0F1A, #6B0F1A 15px, #2D4A3E 15px, #2D4A3E 30px), repeating-linear-gradient(0deg, #6B0F1A, #6B0F1A 15px, #2D4A3E 15px, #2D4A3E 30px)'
-        };
-      case 5:
-        return {
-          background: 'linear-gradient(135deg, #6B0F1A 0%, #C9A84C 100%)',
-          backgroundImage: 'radial-gradient(#C9A84C 2px, transparent 2px)',
-          backgroundSize: '20px 20px'
-        };
-      case 6:
-      default:
-        return {
-          background: 'linear-gradient(135deg, #FAF3E0 0%, #2D4A3E 100%)',
-          backgroundImage: 'repeating-linear-gradient(0deg, rgba(201, 168, 76, 0.1), rgba(201, 168, 76, 0.1) 12px, transparent 12px, transparent 24px)'
-        };
+    {
+      id: 1,
+      name: "Pollachi Classic Maroon Saree",
+      category: "Sarees",
+      material: "Premium Combed Cotton",
+      price: 2450,
+      image: "/saree_festive.png",
+      isNew: true,
+      color: "Deep Maroon with Gold Zari"
+    },
+    {
+      id: 2,
+      name: "Mayilkan Ivory & Forest Saree",
+      category: "Sarees",
+      material: "Mercerized Soft Cotton",
+      price: 2850,
+      image: "/saree_daily.png",
+      isNew: true,
+      color: "Ivory Cream & Forest Green"
+    },
+    {
+      id: 3,
+      name: "Thazhampoo Gold Border Saree",
+      category: "Sarees",
+      material: "Pit Loom Pure Cotton",
+      price: 3200,
+      image: "/saree_festive.png",
+      isNew: false,
+      color: "Heritage Maroon & Fine Zari"
+    },
+    {
+      id: 4,
+      name: "Vasanth Temple Motif Suit Set",
+      category: "Dress Materials",
+      material: "Fine Slub Cotton (3pc)",
+      price: 1650,
+      image: "/dress_material.png",
+      isNew: true,
+      color: "Deep Maroon Block Print"
+    },
+    {
+      id: 5,
+      name: "Anaimalai Checked Lungi",
+      category: "Lungis",
+      material: "Starch-Free Combed Cotton",
+      price: 680,
+      image: "/lungi.png",
+      isNew: true,
+      color: "Forest Green & Maroon Checks"
+    },
+    {
+      id: 6,
+      name: "Aliyar Heritage Table Runner",
+      category: "Home Textiles",
+      material: "Handspun Cotton Weave",
+      price: 1250,
+      image: "/home_textile.png",
+      isNew: false,
+      color: "Ivory Linen with Gold Accents"
     }
-  };
+  ];
 
-  const filteredProducts = filterCategory === "All"
-    ? products
+  const categories = ["All", "Sarees", "Dress Materials", "Lungis", "Home Textiles"];
+
+  const filteredProducts = filterCategory === "All" 
+    ? products 
     : products.filter(p => p.category === filterCategory);
 
   const scrollLeft = () => {
-    const el = document.getElementById('product-strip-grid');
+    const el = document.getElementById('product-carousel-grid');
     if (el) el.scrollBy({ left: -320, behavior: 'smooth' });
   };
 
   const scrollRight = () => {
-    const el = document.getElementById('product-strip-grid');
+    const el = document.getElementById('product-carousel-grid');
     if (el) el.scrollBy({ left: 320, behavior: 'smooth' });
   };
 
   return (
-    <section id="new-arrivals" className="bg-surface py-32 px-8 scroll-reveal">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Title */}
-        <div className="text-center mb-16">
-          <span className="font-accent italic text-accent text-lg mb-2 block">The Latest Weaves</span>
-          <h2 className="font-heading text-4xl text-primary tracking-[0.15em] uppercase inline-block">New Arrivals</h2>
+    <section id="new-arrivals" className="showcase-section section-padding">
+      <div className="container">
+        <div className="text-center">
+          <span className="section-subtitle">The Latest Weaves</span>
+          <h2 className="section-title-luxury" id="showcase-heading">New Arrivals</h2>
           <div className="luxury-divider-gold"></div>
         </div>
 
-        {/* Category Filters */}
-        <div className="flex justify-center gap-4 mt-6 mb-16 flex-wrap">
+        {/* Category Filter Tabs */}
+        <div 
+          style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            gap: '1rem', 
+            margin: '2rem 0 3rem 0',
+            flexWrap: 'wrap' 
+          }}
+        >
           {categories.map((cat) => (
             <button
-              key={cat.id}
-              className={`py-2 px-6 border text-xs font-body uppercase tracking-[0.15em] rounded-[4px] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] focus:outline-none focus:ring-1 focus:ring-accent ${
-                (filterCategory === cat.id)
-                  ? "bg-primary text-bg border-primary shadow-md"
-                  : "bg-surface text-primary border-primary/20 hover:border-primary/50"
-              }`}
-              onClick={() => setFilterCategory(cat.id)}
-              aria-label={`Filter weaves by ${cat.label}`}
+              key={cat}
+              className={`motif-choice-card ${filterCategory === cat ? 'active' : ''}`}
+              onClick={() => setFilterCategory(cat)}
             >
-              {cat.label}
+              {cat}
             </button>
           ))}
         </div>
 
-        {/* Horizontal Strip on Mobile */}
-        <div className="relative mt-8 group">
-          {/* Scroll button Left */}
-          <button 
-            className="absolute top-1/2 -translate-y-1/2 -left-6 z-10 w-12 h-12 rounded-full border border-accent/30 bg-bg text-accent hover:bg-primary hover:text-bg transition-all duration-500 flex items-center justify-center shadow-lg focus:outline-none focus:ring-1 focus:ring-accent hidden lg:flex opacity-0 group-hover:opacity-100"
-            onClick={scrollLeft}
-            aria-label="Scroll products left"
-          >
-            <ChevronLeft size={20} />
-          </button>
-
-          {/* Scroll button Right */}
-          <button 
-            className="absolute top-1/2 -translate-y-1/2 -right-6 z-10 w-12 h-12 rounded-full border border-accent/30 bg-bg text-accent hover:bg-primary hover:text-bg transition-all duration-500 flex items-center justify-center shadow-lg focus:outline-none focus:ring-1 focus:ring-accent hidden lg:flex opacity-0 group-hover:opacity-100"
-            onClick={scrollRight}
-            aria-label="Scroll products right"
-          >
-            <ChevronRight size={20} />
-          </button>
-
-          {/* Product Cards Row */}
+        {/* Carousel Wrapper */}
+        <div className="showcase-carousel-container">
+          {/* Scroll Buttons for Desktop */}
           <div 
-            id="product-strip-grid"
-            className="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-8 px-2 lg:px-0"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            style={{ 
+              position: 'absolute', 
+              top: '50%', 
+              transform: 'translateY(-50%)', 
+              left: '-2.5rem', 
+              zIndex: 10,
+              display: 'block' 
+            }}
+            className="carousel-control-btn-left"
           >
+            <button 
+              className="story-icon-box" 
+              style={{ width: '40px', height: '40px', cursor: 'pointer', background: 'var(--color-bg)' }}
+              onClick={scrollLeft}
+              aria-label="Scroll left"
+            >
+              <ChevronLeft size={20} />
+            </button>
+          </div>
+
+          <div 
+            style={{ 
+              position: 'absolute', 
+              top: '50%', 
+              transform: 'translateY(-50%)', 
+              right: '-2.5rem', 
+              zIndex: 10,
+              display: 'block' 
+            }}
+            className="carousel-control-btn-right"
+          >
+            <button 
+              className="story-icon-box" 
+              style={{ width: '40px', height: '40px', cursor: 'pointer', background: 'var(--color-bg)' }}
+              onClick={scrollRight}
+              aria-label="Scroll right"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          {/* Scrolling Grid */}
+          <div className="showcase-grid" id="product-carousel-grid">
             {filteredProducts.map((product) => (
-              <div 
-                key={product.id}
-                className="snap-start min-w-[290px] md:min-w-[320px] flex-1 bg-surface border border-primary/10 rounded-[4px] overflow-hidden luxury-card-lift relative flex flex-col justify-between"
-              >
-                {/* Image Area - CSS gradient card */}
-                <div 
-                  className="h-[360px] w-full relative"
-                  style={getProductCSSStyle(product.id)}
-                  role="img"
-                  aria-label={`${product.name} material pattern preview`}
-                >
-                  {product.isNew && (
-                    <span className="absolute top-4 left-4 bg-primary text-bg font-body text-[0.65rem] uppercase tracking-[0.2em] px-3.5 py-1 border border-accent rounded-full shadow-md z-10">
-                      New Weave
-                    </span>
-                  )}
-                  {/* Shimmer Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full hover:animate-[shimmer_1.5s_ease-in-out_infinite]"></div>
+              <div key={product.id} className="product-card luxury-card">
+                <div className="product-img-area">
+                  {product.isNew && <span className="new-arrival-ribbon">New Weave</span>}
+                  <img src={product.image} alt={product.name} loading="lazy" />
                 </div>
-
-                {/* Details */}
-                <div className="p-6 flex flex-col flex-grow justify-between">
-                  <div>
-                    {/* Pure Handloom Maroon Badge */}
-                    <div className="mb-3.5">
-                      <span className="bg-primary text-bg text-[0.6rem] font-body font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-[4px] inline-block">
-                        Pure Handloom
-                      </span>
-                    </div>
-
-                    <span className="font-body text-[0.7rem] text-accent font-semibold uppercase tracking-[0.15em] mb-1.5 block">
-                      {product.material} • {product.color}
-                    </span>
-                    <h3 className="font-heading text-xl text-primary font-normal leading-snug mb-4 tracking-wide">
-                      {product.name}
-                    </h3>
-                  </div>
-
-                  <div>
-                    {/* Maroon Price, Large, Cormorant */}
-                    <div className="font-heading text-3xl text-primary font-normal mb-5 tracking-wide">
-                      ₹ {product.price.toLocaleString('en-IN')}
-                    </div>
-
-                    <button 
-                      className="w-full flex items-center justify-center gap-2 bg-transparent border border-primary text-primary hover:bg-primary hover:text-bg py-3.5 text-xs font-body uppercase tracking-[0.15em] transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] focus:outline-none focus:ring-1 focus:ring-accent rounded-[4px]"
-                      onClick={() => {
-                        console.log(`Analytics: WhatsApp order click - Product ID: ${product.id}`);
-                        openWhatsApp(product.name, product.color);
-                      }}
-                      aria-label={`Order ${product.name} via WhatsApp`}
-                    >
-                      <MessageCircle size={14} /> Order via WhatsApp
-                    </button>
-                  </div>
+                <div className="product-info">
+                  <span className="product-tag">{product.material}</span>
+                  <h3 className="product-name">{product.name}</h3>
+                  <div className="product-price">₹ {product.price.toLocaleString('en-IN')}</div>
+                  <button 
+                    className="product-wa-btn" 
+                    onClick={() => {
+                      console.log(`Analytics: Product WhatsApp order clicked for ID ${product.id}`);
+                      openWhatsApp(product.name, product.color);
+                    }}
+                  >
+                    <MessageSquare size={14} /> Order via WhatsApp
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <p className="text-center font-body text-xs text-text/50 tracking-[0.1em] mt-6">
-          ← Swipe horizontally to browse all items →
+        <p className="carousel-instructions">
+          ← Swipe or scroll to explore all weaves →
         </p>
       </div>
     </section>

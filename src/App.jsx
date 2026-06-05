@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
@@ -11,7 +11,7 @@ import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
-const WHATSAPP_NUMBER = "918015611680"; 
+const WHATSAPP_NUMBER = "916382675859"; 
 
 function openWhatsApp(productName = "", color = "") {
   const message = productName 
@@ -30,28 +30,11 @@ function App() {
     openWhatsApp(productName, color);
   };
 
-  // Scroll Reveal System using IntersectionObserver
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.15
-    });
-
-    const revealElements = document.querySelectorAll('.scroll-reveal');
-    revealElements.forEach((el) => observer.observe(el));
-
-    return () => {
-      revealElements.forEach((el) => observer.unobserve(el));
-    };
-  }, []);
-
   return (
     <>
+      {/* Texture Overlay for Handwoven Fabric tactile feel */}
+      <div className="fabric-texture-overlay"></div>
+
       {/* Navigation Header */}
       <Navbar openWhatsApp={openWhatsAppWithTracking} />
 
@@ -62,48 +45,26 @@ function App() {
       <Marquee />
 
       {/* Collections Section */}
-      <div className="scroll-reveal">
-        <Collections setFilterCategory={setFilterCategory} />
-      </div>
-
-      <hr className="section-divider-gold" />
+      <Collections setFilterCategory={setFilterCategory} />
 
       {/* Heritage Story Section */}
-      <div className="scroll-reveal">
-        <Story />
-      </div>
-
-      <hr className="section-divider-gold" />
+      <Story />
 
       {/* Showcase Section (New Arrivals carousel) */}
-      <div className="scroll-reveal">
-        <Showcase 
-          openWhatsApp={openWhatsAppWithTracking} 
-          filterCategory={filterCategory} 
-          setFilterCategory={setFilterCategory} 
-        />
-      </div>
-
-      <hr className="section-divider-gold" />
+      <Showcase 
+        openWhatsApp={openWhatsAppWithTracking} 
+        filterCategory={filterCategory} 
+        setFilterCategory={setFilterCategory} 
+      />
 
       {/* Bespoke Customizer Playground */}
-      <div className="scroll-reveal">
-        <LoomCustomizer openWhatsApp={openWhatsAppWithTracking} />
-      </div>
-
-      <hr className="section-divider-gold" />
+      <LoomCustomizer openWhatsApp={openWhatsAppWithTracking} />
 
       {/* Forest Green Step-by-Step Checkout Section */}
-      <div className="scroll-reveal">
-        <WhatsAppOrder openWhatsApp={openWhatsAppWithTracking} />
-      </div>
-
-      <hr className="section-divider-gold" />
+      <WhatsAppOrder openWhatsApp={openWhatsAppWithTracking} />
 
       {/* Customer Testimonials */}
-      <div className="scroll-reveal">
-        <Testimonials />
-      </div>
+      <Testimonials />
 
       {/* Footer Details */}
       <Footer openWhatsApp={openWhatsAppWithTracking} />
