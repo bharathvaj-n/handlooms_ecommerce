@@ -49,7 +49,7 @@ export default function Navbar({ openWhatsApp }) {
               <a href="#craft" onClick={(e) => handleLinkClick(e, 'craft')}>Craft</a>
             </li>
             <li className="navbar-link-item">
-              <a href="#contact" onClick={(e) => handleLinkClick(e, 'footer')}>Contact</a>
+              <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')}>Contact</a>
             </li>
           </ul>
         </nav>

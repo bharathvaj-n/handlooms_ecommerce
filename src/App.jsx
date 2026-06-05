@@ -8,6 +8,7 @@ import Showcase from './components/Showcase';
 import LoomCustomizer from './components/LoomCustomizer';
 import WhatsAppOrder from './components/WhatsAppOrder';
 import Testimonials from './components/Testimonials';
+import ContactSection from './sections/ContactSection';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
@@ -65,6 +66,9 @@ function App() {
 
       {/* Customer Testimonials */}
       <Testimonials />
+
+      {/* Contact Section */}
+      <ContactSection openWhatsApp={openWhatsAppWithTracking} />
 
       {/* Footer Details */}
       <Footer openWhatsApp={openWhatsAppWithTracking} />
