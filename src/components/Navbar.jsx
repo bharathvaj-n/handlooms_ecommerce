@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, MessageSquare } from 'lucide-react';
+import { Menu, X, MessageSquare, Phone } from 'lucide-react';
 
 export default function Navbar({ openWhatsApp }) {
   const [scrolled, setScrolled] = useState(false);
@@ -67,6 +67,45 @@ export default function Navbar({ openWhatsApp }) {
             <MessageSquare size={20} strokeWidth={1.5} />
             <span className="whatsapp-pulse-dot"></span>
           </div>
+
+          <button
+            onClick={() => {
+              const msg = encodeURIComponent(
+                "Hi Kanish Handlooms! 🧵\n\nI'd like to schedule a quick call to discuss your collection and place a custom order.\n\nMy preferred time: ___\n\nPlease confirm a slot. Thank you!"
+              );
+              window.open(`https://wa.me/916382675859?text=${msg}`, '_blank');
+            }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '7px',
+              padding: '9px 18px',
+              background: '#6B0F1A',
+              color: '#C9A84C',
+              border: '1px solid #C9A84C',
+              borderRadius: '3px',
+              fontFamily: '"Lato", sans-serif',
+              fontSize: '12px',
+              fontWeight: '600',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              transition: 'all 0.25s ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = '#C9A84C';
+              e.currentTarget.style.color = '#6B0F1A';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = '#6B0F1A';
+              e.currentTarget.style.color = '#C9A84C';
+            }}
+            aria-label="Book a call with Kanish Handlooms"
+          >
+            <Phone size={14} />
+            <span className="speak-btn-label">Speak to a Weaver</span>
+          </button>
 
           <button 
             className="mobile-nav-toggle" 

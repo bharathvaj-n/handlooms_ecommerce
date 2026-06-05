@@ -1339,6 +1339,10 @@ p {
 }
 
 @media (max-width: 768px) {
+  .speak-btn-label {
+    display: none;
+  }
+
   .section-padding {
     padding: 4rem 0;
   }
