@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Color Tokens mapped to Tailwind classes */
+  --color-primary: #6B0F1A;      /* Deep Maroon */
+  --color-accent: #C9A84C;       /* Antique Gold */
+  --color-bg: #FAF3E0;           /* Ivory Cream */
+  --color-secondary: #2D4A3E;    /* Forest Green */
+  --color-text: #2C2C2C;         /* Warm Charcoal */
+  --color-surface: #FDF8F0;      /* Warm White */
+  --color-whatsapp: #25D366;
+  --color-gold-light: #DFCA7A;
+  
+  /* Brand Typography Tokens mapped to Tailwind classes */
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Lato', sans-serif;
+  --font-accent: 'Playfair Display', serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF3E0; /* Ivory Cream */
+}
+::-webkit-scrollbar-thumb {
+  background: #6B0F1A; /* Deep Maroon */
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C9A84C; /* Antique Gold */
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+  background-color: #FAF3E0; /* Ivory Cream */
+  color: #2C2C2C; /* Warm Charcoal */
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Section Divider */
+.section-divider-gold {
+  height: 1px;
+  width: 100%;
+  background-color: rgba(201, 168, 76, 0.6);
+  border: none;
+}
+
+/* Fabric Texture Overlay on Hero and Dark Sections */
+.fabric-texture-overlay-premium {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 2px, rgba(201, 168, 76, 0.03) 2px, rgba(201, 168, 76, 0.03) 4px
+  ), repeating-linear-gradient(
+    90deg, transparent, transparent 2px, rgba(201, 168, 76, 0.03) 2px, rgba(201, 168, 76, 0.03) 4px
+  );
+}
+
+/* Scroll Reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Shimmer Animation for Buttons & Cards on Hover */
+@keyframes shimmer { 
+  0% { background-position: 200% 0; } 
+  100% { background-position: -200% 0; } 
+}
+
+.shimmer-hover:hover {
+  background: linear-gradient(90deg, transparent 0%, rgba(201, 168, 76, 0.15) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Card Hover Lift & transition overrides */
+.luxury-card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.luxury-card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(107, 15, 26, 0.15);
+}
+
+/* Marquee scrolling strip */
+@keyframes marquee { 
+  0% { transform: translateX(0); } 
+  100% { transform: translateX(-50%); } 
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+  display: inline-block;
+  animation: marquee-reverse 25s linear infinite;
+}
+
+@keyframes marquee-reverse { 
+  0% { transform: translateX(-50%); } 
+  100% { transform: translateX(0); } 
+}
+
+/* Floating WhatsApp pulse badge */
+@keyframes pulse { 
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); } 
+  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); } 
+}
+
+.animate-whatsapp-pulse {
+  animation: pulse 4s infinite ease-in-out;
+}
